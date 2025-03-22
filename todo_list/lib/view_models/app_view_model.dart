@@ -27,4 +27,22 @@ class AppViewModel extends ChangeNotifier{
         return bottomSheetView;
       }));
   }
+
+  bool getTaskValue(int taskIndex){
+    return tasks[taskIndex].complete;
+  }
+
+  void setTaskValue(int taskIndex, bool taskValue){
+    tasks[taskIndex].complete = taskValue;
+    notifyListeners();
+  }
+
+  String getTaskTitle(int taskIndex){
+    return tasks[taskIndex].title;
+  }
+
+  void deleteTask(int taskIndex){
+    tasks.removeAt(taskIndex);
+    notifyListeners();
+  }
 }
