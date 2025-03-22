@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/view_models/app_view_model.dart';
+import 'package:todo_list/views/bottom_sheets/add_task_bottom_sheet_view.dart';
 
 class AddTaskView extends StatelessWidget {
   const AddTaskView({super.key});
@@ -18,7 +19,10 @@ class AddTaskView extends StatelessWidget {
               borderRadius: BorderRadius.circular(20)
             )
           ),
-          onPressed: () {}, 
+          onPressed: () {
+            viewModel.bottomSheetBuilder(
+              const AddTaskBottomSheetView(), context);
+          }, 
           child: Icon(Icons.add, size: 30,
           ))
         );
