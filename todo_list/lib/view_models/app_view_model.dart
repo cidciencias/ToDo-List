@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import '../models/user_model.dart';
 import '../models/task_model.dart';
@@ -12,6 +14,8 @@ class AppViewModel extends ChangeNotifier{
   Color colorlvl4 = Colors.grey.shade900;
 
   int get numTasks => tasks.length;
+
+  int get numTasksRemaining => tasks.where((task) => !task.complete).length;
 
   void addTask(Task newTask){
     tasks.add(newTask);
