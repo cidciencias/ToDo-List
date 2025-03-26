@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import '../models/user_model.dart';
 import '../models/task_model.dart';
@@ -16,6 +14,8 @@ class AppViewModel extends ChangeNotifier{
   int get numTasks => tasks.length;
 
   int get numTasksRemaining => tasks.where((task) => !task.complete).length;
+
+  String get username => user.username; 
 
   void addTask(Task newTask){
     tasks.add(newTask);
@@ -47,6 +47,21 @@ class AppViewModel extends ChangeNotifier{
 
   void deleteTask(int taskIndex){
     tasks.removeAt(taskIndex);
+    notifyListeners();
+  }
+
+  void updateUsername(String newUsername){
+    user.username = newUsername;
+    notifyListeners();
+  }
+
+  void deleteAllTasks(){
+    tasks.clear();
+    notifyListeners();
+  }
+
+  void deleteCompletedTasks(){
+    tasks = tasks.where((task) => task.complete).toList();
     notifyListeners();
   }
 }
